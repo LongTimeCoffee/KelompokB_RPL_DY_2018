@@ -1,3 +1,20 @@
+<?php
+    session_start();
+    
+        /*if(empty($_SESSION['Nama'])){
+            header('location: SignIn.php');
+        }
+?>
+<?php if(isset($_SESSION["Nama"])):?>
+        <?php echo $_SESSION['Nama'];?>
+    <?php endif ?>
+
+    <?php if(isset($_SESSION['id_pelanggan']) and $_SESSION['Nama']==NULL):?>
+        <?php echo $_SESSION['id_pelanggan'];?>
+            <?php endif*/ 
+    ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,7 +29,7 @@
         <meta name="author" content="Bootstrap Temple">
 
         <!-- Page Title -->
-        <title>LongTme Restaurant <!-- Bootstrap Template from the Bootstrap Temple--></title>
+        <title>LongTme Restaurant </title>
         <!-- Favicon -->
         <link rel="shortcut icon" href="img/favicon.ico">
 
@@ -46,10 +63,10 @@
             <header class="header">
                 <nav class="navbar navbar-default navbar-fixed-top">
                     <div class="container">
-                        <div class="navbar-header"><a href="index.html" class="navbar-brand"><img src="img/logo.png" alt="Italiano" width="100"></a>
+                        <!--<div class="navbar-header"><a href="index.html" class="navbar-brand"><img src="img/logo.png" alt="Italiano" width="100"></a>-->
                             <div class="navbar-buttons">
-                        <!--<div class="navbar-header"><a href="index.html" class="navbar-brand"><alt="Italiano" width="100">LongTime Coffee</a>
-                            <div class="navbar-buttons">-->
+                        <div class="navbar-header"><a href="index.html" class="navbar-brand"><alt="Italiano" width="100">LongTime Coffee
+                            <div class="navbar-buttons">
                                 <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle navbar-btn">Menu<i class="fa fa-align-justify"></i></button>
                             </div>
                         </div>
@@ -58,10 +75,11 @@
                                 <li class="active"><a href="#hero">Home</a></li>
                                 <li><a href="#about">About</a></li>
                                 <li><a href="#menu">Menu</a></li>
-                                <li><a href="#booking">Reservation</a></li>
                                 <li><a href="#contact">Contact</a></li>
-                                <li><a href="#Logout">Logout</a></li>
                                 <li><a href="#Struk">Struk</a></li>
+                                <li><a href="SignIn.php">SignIn</a></li>
+                                <li><a href="SignIn.php?logout='1'">Logout</a></li>
+                        
                             </ul>
                             <a href="#" class="btn navbar-btn btn-unique hidden-sm hidden-xs" id="open-reservation">Make a Reservation</a>
                         </div>
@@ -160,7 +178,7 @@
                         <h2>About Restaurant</h2>
                         <h3>Check our story</h3>
                     </header>
-                    <p class="lead">LongTime Coffee adalah sebuah cafe yang terletak di Lamnyong, tepatnya di seberang Nasi Uduk Kelapa Dua</p>
+                    <p class="lead">LongTime Coffee adalah sebuah cafe yang terletak di Lamnyong, tepatnya di seberang Nasi Uduk Kelapa Dua. Cafe ini biasa dikunjungi oleh kalangan mahasiswa. Ada yang sekedar duduk santai bersama teman-teman, ada juga yang sedang membuat tugas. LongTime Coffee buka pada pukul 08.00-24.00. Pada pagi hari, cafe ini menyediakan kue-kue tradisional yang disajikan di atas piring kecil</p>
                 </div>
             </section>
             <!-- End About Section -->
@@ -176,18 +194,19 @@
                     <div class="menu">
                         <!-- Tabs Navigatin -->
                         <ul class="nav nav-tabs text-center has-border" role="tablist">
-                            <li role="presentation" class="active"><a href="#breakfast" aria-controls="breakfast" role="tab" data-toggle="tab">Breakfast</a></li>
-                            <li role="presentation"><a href="#lunch" aria-controls="lunch" role="tab" data-toggle="tab">Lunch</a></li>
+                            <li role="presentation" class="active"><a href="#makanan" aria-controls="makanan" role="tab" data-toggle="tab">Makanan</a></li>
+                            <!--<li role="presentation"><a href="#lunch" aria-controls="lunch" role="tab" data-toggle="tab">Lunch</a></li>
                             <li role="presentation"><a href="#dinner" aria-controls="dinner" role="tab" data-toggle="tab">Dinner</a></li>
-                            <li role="presentation"><a href="#party" aria-controls="party" role="tab" data-toggle="tab">Party</a></li>
-                            <li role="presentation"><a href="#drinks" aria-controls="drinks" role="tab" data-toggle="tab">Drinks</a></li>
+                            <li role="presentation"><a href="#party" aria-controls="party" role="tab" data-toggle="tab">Party</a></li>-->
+                            <li role="presentation"><a href="#minuman" aria-controls="minuman" role="tab" data-toggle="tab">Minuman</a></li>
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
 
                             <!-- Breakfast Panel -->
-                            <div role="tabpanel" class="tab-pane active" id="breakfast">
+                            <!-- Breakfast Panel -->
+                            <div role="tabpanel" class="tab-pane active" id="makanan">
                                 <div class="row">
                                     <!-- item -->
                                     <div class="col-sm-6">
@@ -472,7 +491,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div><!-- End lunch Panel-->
+                            </div><!-- End lunch Panel-->-->
 
                             <!-- Dinner Panel -->
                             <div role="tabpanel" class="tab-pane fade" id="dinner">
@@ -735,7 +754,7 @@
                             </div><!-- End Party Panel-->
 
                             <!-- Drinks Panel -->
-                            <div role="tabpanel" class="tab-pane fade" id="drinks">
+                            <div role="tabpanel" class="tab-pane fade" id="minuman">
                                 <div class="row">
                                     <!-- item -->
                                     <div class="col-sm-6">
@@ -866,66 +885,51 @@
                     </div>
                 </div>
             </section>
-            <!-- End Menu Section -->
+                            
+                             <!-- End Menu Section -->
 
-            <!-- Booking Section -->
-            <section id="booking" class="booking">
-                <div class="container text-center">
-                    <header>
-                        <h2>Order your table</h2>
-                        <h3>Enjoy your meal at our restaurant</h3>
-                    </header>
 
-                    <div class="row">
-                        <div class="form-holder col-md-10 col-md-push-1 text-center">
-                            <div class="ribbon">
-                                <i class="fa fa-star"></i>
-                            </div>
-
-                            <h2>Make a reservation</h2>
-                            <h3>Book your table now</h3>
-
-                            <form id="booking-form" method="get" action="#">
-                                <div class="row">
-                                    <div class="col-md-10 col-md-push-1">
-                                        <div class="row">
-                                            <!--<label for="name" class="col-sm-6 unique">Name
-                                                <input name="name" type="text" id="name" required>
-                                            </label>
-                                            <label for="email" class="col-sm-6 unique">Email
-                                                <input name="email" type="email" id="email" required>
-                                            </label>-->
-                                            <!--<label for="number" class="col-sm-6 unique">Number
-                                                <input name="number" type="text" id="number" required>
-                                            </label>-->
-                                            <label for="people" class="col-sm-6 unique">How Many People
-                                                <input name="people" type="number" id="people" min="1" required>
-                                            </label>
-                                            <label for="date" class="col-sm-6 unique">Date
-                                                <input name="date" type="text" id="date" class="datepicker-here" data-language='en' required>
-                                            </label>
-                                            <label for="time" class="col-sm-6 unique">Time
-                                                <input name="time" type="text" id="time" class="timepicker" required>
-                                            </label>
-                                             <label for="people" class="col-sm-6 unique">How Many People
-                                                <input name="people" type="number" id="people" required>
-                                            </label>
-                                            <!--min="1"-->
-                                            <label for="request" class="col-sm-12 unique">Special Request
-                                                <textarea id="request" name="request" required></textarea>
-                                            </label>
-                                            <div class="col-sm-12">
-                                                <button type="submit" class="btn-unique">Book Now</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+            <div class="Struk">
+                <section id="Struk" class="Struk" >
+                    <div class="container text-left">
+                            <h1 class="header">Struk</h1>
+                            <?php
+                                include 'connection.php';
+                                //include 'formsignin.php';
+                                $id_pelanggan= $_SESSION["id_pelanggan"];
+                                 $sql = "SELECT akun.id_pelanggan,akun.Nama,akun.No_hp, pesan.meja,pesan.date,pesan.time,pesan.people,pesan.clientrequest,menu.nama_menu,menu.jumlah From akun join pesan on akun.id_pelanggan=pesan.id_pelanggan join menu on pesan.id_pesan=menu.id_pesan where akun.id_pelanggan= '$id_pelanggan'";
+                                $data = mysqli_query($link, $sql);
+                                if (!$data) {
+                                        printf("Error: %s\n", mysqli_error($link));
+                                        exit();
+                                    }
+                                $cnt=0;
+        
+                                    while($row = mysqli_fetch_array($data)){
+                                        $Nama=$row["Nama"]; 
+                                        $No_hp=$row["No_hp"];  
+                                        $Meja=$row["meja"];
+                                        $Date=$row["date"];
+                                        $Time=$row["time"];
+                                        $People=$row["people"];
+                                        $Clientrequest=$row["clientrequest"];
+                                        $Nama_menu=$row["nama_menu"];
+                                        $Jumlah=$row["jumlah"];  
+                                    } 
+                                    echo "Name : ".$Nama."<br>";
+                                    echo "Number Phone : ".$No_hp."<br>";
+                                    echo "Table : ".$Meja."<br>";
+                                    echo "Date : ".$Date."<br>";
+                                    echo "Time : ".$Time."<br>";
+                                    echo "People : ".$People."<br>";
+                                    echo "Menu : ".$Nama_menu."<br>";
+                                    echo "Spesial request :  ".$Clientrequest."<br>";
+                                    echo "Quantity : ".$Jumlah;
+                            ?>
                         </div>
-                    </div>
+
+                    </section>
                 </div>
-            </section>
-            <!-- End Booking Section -->
 
 
             <!-- End Booking Section -->
@@ -966,9 +970,10 @@
                     <div class="row">
                         <div class="col-md-4 brief">
                             <div class="header">
-                                <img src="img/logo-footer.png" alt="italiano" width="100">
+                                <h6>LongTime</h6>
+                                <!--<img src="img/logo-footer.png" alt="italiano" width="100">-->
                             </div>
-                           <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                           <p>Kafe kekinian dimana kamu bisa hangout sepuasnya.</p>
                         </div>
 
                         <div class="col-md-4 contact">
@@ -976,8 +981,7 @@
                                 <h6>Contact</h6>
                             </div>
                             <ul class="contact list-unstyled">
-                                <li><span class="icon-map text-primary"></span>Basioun, 23 July st, Egypt</li>
-                                <li><a href="mailto:Italiano@Company.com"><span class="icon-phone text-primary"></span>Italiano@Company.com</a></li>
+                                <li><span class="icon-map text-primary"></span>Lamnyong, Banda Aceh</li>
                                 <li><span class="icon-mail text-primary"></span>9465 7675 294</li>
                                 <li><span class="icon-printer text-primary"></span>333-999-666</li>
                             </ul>
@@ -987,7 +991,7 @@
                             <div class="header">
                                 <h6>Newsletter</h6>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmo.</p>
+                            <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmo.</p>-->
                             <form action="#" id="subscribe" class="clearfix">
                                 <input type="email" name="subscribtion-email" placeholder="Enter Your Email Address" class="pull-left">
                                 <button type="submit" class="btn-unique has-border pull-left">Subscribe</button>
@@ -1031,7 +1035,6 @@
 
 
             <!--Logout btn -->
-            
 
             <!-- moadal booking form -->    
 
@@ -1164,41 +1167,7 @@
             </div><!-- end modal booking form -->
         </div>
  
-        <div class="Struk">
-                <section id="Struk" class="Struk" >
-                    <div class="container text-center">
-                            <h1 class="header">Struk</h1>
-                            <?php
-                                include 'connection.php';
-                                 $sql = "SELECT akun.id_pelanggan,akun.Nama,akun.No_hp, pesan.date,pesan.time,pesan.people,pesan.clientrequest,menu.nama_menu,menu.jumlah From akun join pesan on akun.id_pelanggan=pesan.id_pelanggan join menu on pesan.id_pesan=menu.id_pesan";
-                                $data = mysqli_query($link, $sql);
-                                if (!$data) {
-                                        printf("Error: %s\n", mysqli_error($link));
-                                        exit();
-                                    }
-                                $cnt=0;
-                                    while($row = mysqli_fetch_array($data)){
-                                        $Nama=$row["Nama"]; 
-                                        $No_hp=$row["No_hp"];  
-                                        $Date=$row["date"];
-                                        $Time=$row["time"];
-                                        $People=$row["people"];
-                                        $Clientrequest=$row["clientrequest"];
-                                        $Nama_menu=$row["nama_menu"];
-                                        $Jumlah=$row["jumlah"];  
-                                    } 
-                                    echo "<br>".$Nama."<br>"; 
-                                    echo "<br>".$No_hp."</br>";
-                                    echo "<br>".$Date."</br";
-                                    echo "<br>".$Time."</br>";
-                                    echo "<br>".$People."</br>";
-                                    echo "<br>".$Nama_menu."</br>";
-                                    echo "<br>".$Clientrequest."</br>";
-                                    echo "<br>".$Jumlah."</br>";
-                            ?>
-                        </div>
-                    </section>
-                </div>
+       
 
                        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
