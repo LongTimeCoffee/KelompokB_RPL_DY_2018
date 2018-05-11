@@ -114,28 +114,9 @@ $(document).ready(function () {
         $('body').css({'overflow': 'hidden'});
 
         setTimeout(function () {
-            $(".pages-reservasi").hide();
-			$(".page1").show();
-			$('#reservation-modal').addClass('is-visible');
+            $('#reservation-modal').addClass('is-visible');
         }, 100);
     });
-	
-	$("#nextBtnMenu").click(function(){
-		$(".page1").hide();
-		$(".page2").show();
-	});
-	
-	$("#prevBtnMeja").click(function(){
-		$(".page2").hide();
-		$(".page1").show();
-	});
-	
-	$(".btn-meja").click(function(){
-		$(".btn-meja").removeClass("btn-meja-pilih");
-		$(this).addClass("btn-meja-pilih");
-		var noMeja = $(this).attr("idMeja");
-		$("#noMeja").val(noMeja);
-	});
 
     $('#close').click(function () {
         $('.reservation-overlay').fadeOut();

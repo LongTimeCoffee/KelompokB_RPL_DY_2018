@@ -658,7 +658,7 @@
                                         <div class="menu-item clearfix">
                                             <div class="item-details pull-left">
                                                 <h5>Wild Mushroom Bucatini with Kale</h5>
-                                                <p>Mushroom / Veggie / Whit[e Sources</p>
+                                                <p>Mushroom / Veggie / White Sources</p>
                                             </div>
                                             <div class="item-price pull-right">
                                                 <strong class="text-large text-primary">20$</strong>
@@ -968,69 +968,59 @@
                                 <h2>Make a reservation</h2>
                                 <h3>Book your table now</h3>
 
-                                <div id="booking-form-alternative" method="post"  action="Reservasi.php">
-                                   <div class="row">
+                                <form id="booking-form-alternative" method="get"  action="#">
+                                    <div class="row">
                                         <div class="col-md-push-1 col-sm-10">
                                             <div class="row">
-                                                 <!-- <?php 
-                                                 // include ('connection.php');
-                                                 // $cekdata="SELECT meja from pesan";
-                                                 // $ada=mysql_query($link, $cekdata);
-                                                 // if(mysql_num_rows($ada)>0) {
-                                                 //    include('meja.php');
-                                                    
+                                                <div class=col-sm-4>
+                                                    <p><button class=nomor><auto><b>1</b></auto></button></p>
+                                                    <p><button class=nomor><auto><b>2</b></auto></button></p>
+                                                    <p><button class=nomor><auto><b>3</b></auto></button></p>
+                                                </div>  
+                                                <div class=col-sm-4>
+                                                    <p><button class=nomor><auto><b>4</b></auto></button></p>
+                                                    <p><button class=nomor><auto><b>5</b></auto></button></p>
+                                                    <p><button class=nomor><auto><b>6</b></auto></button></p>
+                                                </div>
+                                                <div class=col-sm-4>
+                                                    <p><button class=nomor><auto><b>7</b></auto></button></p>
+                                                    <p><button class=nomor><auto><b>8</b></auto></button></p>
+                                                    <p><button class=nomor><auto><b>9</b></auto></button></p>
+                                                </div>
 
-                                                 ?> -->
-                                                 <?php 
-                                                        include ('connection.php');
-                                                        $syntax = "SELECT meja FROM pesan";
-                                                        $data = mysqli_query($link, $syntax);
-                                                        if($data){
-                                                             $cnt=0;
-                                                             while ($row=mysqli_fetch_assoc($data)) {
-                                                                 $meja=$row["meja"];
-                                                                 //<button class="btn btn-danger btn-lg" name="meja"> header("location:index.php#reservation-modal")
-                                                             }
-                                                        }
-                                                     ?>
-                                                    
 
-                                                    <div class=col-sm-4>
-                                                        <p><button class="btn btn-success btn-lg" name="meja"><a href="Reservasi.php?meja=1"><auto><b>01</b></auto></a></button></p><br>
-                                                        <p><button class="btn btn-success btn-lg" name="meja"><a href="Reservasi.php?meja=2"><auto><b>02</b></auto></a></button></p><br>
-                                                        <p><button class="btn btn-success btn-lg" name="meja"><a href="Reservasi.php?meja=3"><auto><b>03</b></auto></a></button></p><br>
-                                                        <p><button class="btn btn-success btn-lg" name="meja"><a href="Reservasi.php?meja=4"><auto><b>04</b></auto></a></button></p><br>
-                                                        <p><button class="btn btn-success btn-lg" name="meja"><a href="Reservasi.php?meja=5"><auto><b>05</b></auto></a></button></p><br>
-                                                        <p><button class="btn btn-success btn-lg" name="meja"><a href="Reservasi.php?meja=6"><auto><b>06</b></auto></a></button></p><br>
-                                                    </div>
-                                                    <div class=col-sm-4>
-                                                        <p><button class="btn btn-success btn-lg" name="meja"><a href="Reservasi.php?meja=7"><auto><b>07</b></auto></a></button></p><br>
-                                                        <p><button class="btn btn-success btn-lg" name="meja"><a href="Reservasi.php?meja=8"><auto><b>08</b></auto></a></button></p><br>
-                                                        <p><button class="btn btn-success btn-lg" name="meja"><a href="Reservasi.php?meja=9"><auto><b>09</b></auto></a></button></p><br>
-                                                        <p><button class="btn btn-success btn-lg" name="meja"><a href="Reservasi.php?meja=10"><auto><b>10</b></auto></a></button></p><br>
-                                                        <p><button class="btn btn-success btn-lg" name="meja"><a href="Reservasi.php?meja=11"><auto><b>11</b></auto></a></button></p><br>
-                                                        <p><button class="btn btn-success btn-lg" name="meja"><a href="Reservasi.php?meja=12"><auto><b>12</b></auto></a></button></p><br>
-                                                    </div>
-                                                    <div class=col-sm-4>
-                                                        <p><button class="btn btn-success btn-lg" name="meja"><a href="Reservasi.php?meja=13"><auto><b>13</b></auto></a></button></p><br>
-                                                        <p><button class="btn btn-success btn-lg" name="meja"><a href="Reservasi.php?meja=14"><auto><b>14</b></auto></a></button></p><br>
-                                                        <p><button class="btn btn-success btn-lg" name="meja"><a href="Reservasi.php?meja=15"><auto><b>15</b></auto></a></button></p><br>
-                                                        <p><button class="btn btn-success btn-lg" name="meja"><a href="Reservasi.php?meja=16"><auto><b>16</b></auto></a></button></p><br>
-                                                        <p><button class="btn btn-success btn-lg" name="meja"><a href="Reservasi.php?meja=17"><auto><b>17</b></auto></a></button></p><br>
-                                                        <p><button class="btn btn-success btn-lg" name="meja"><a href="Reservasi.php?meja=18"><auto><b>18</b></auto></a></button></p><br>
-                                                    </div>
 
-                                                    
-                                                       <!--  <div class="col-sm-12">
-                                                            <button class="btn-unique"><a href="date.html">NEXT</a></button>
-                                                        </div> -->       
+                                               <!--  <label for="cname" class="col-sm-6 unique">Name
+                                                    <input name="clientname" type="text" id="cname" required>
+                                                </label>
+                                                <label for="cemail" class="col-sm-6 unique">Email
+                                                    <input name="clientemail" type="email" id="cemail" required>
+                                                </label>
+                                                <label for="cnumber" class="col-sm-6 unique">Number
+                                                    <input name="clientnumber" type="text" id="cnumber" required>
+                                                </label>
+                                                <label for="cpeople" class="col-sm-6 unique">How Many People
+                                                    <input name="clientpeople" type="number" id="cpeople" min="1" required>
+                                                </label>
+                                                <label for="cdate" class="col-sm-6 unique">Date
+                                                    <input name="clientdate" type="text" id="cdate" class="datepicker-here" data-language='en' required>
+                                                </label>
+                                                <label for="time-alt" class="col-sm-6 unique">Time
+                                                    <input name="clienttime" type="text" id="time-alt" class="timepicker" required>
+                                                </label>
+                                                <label for="request-alt" class="col-sm-12 unique">Special Request
+                                                    <textarea id="request-alt" name="clientrequest" required></textarea>
+                                                </label> -->
+                                                <div class="col-sm-12">
+                                                    <button class="btn-unique"><a href="date.html">NEXT</a></button>
+                                                </div>
                                                 <!-- <div class="col-sm-12">
                                                     <button type="submit" class="btn-unique">Book Now</button> -->
-                                                <!--</div> -->
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>

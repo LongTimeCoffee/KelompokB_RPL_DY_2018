@@ -1,18 +1,21 @@
 <?php
 	include ('connection.php');
 	session_start();
-		if(!empty($_POST)){
-			$Id_pelanggan = $_SESSION["id_pelanggan"];
-			$Meja = htmlentities(Strip_tags($_POST["meja"])); 
-			$Date = htmlentities(Strip_tags($_POST["date"]));
-			$Time = htmlentities(Strip_tags($_POST["time"]));
-			$People = htmlentities(Strip_tags($_POST["people"]));
-			$clientrequest = htmlentities(Strip_tags($_POST["clientrequest"]));
+		if(! empty($_GET["meja"])){
+			//$Id_pelanggan = $_SESSION["id_pelanggan"];
+			$Meja = htmlentities(Strip_tags($_GET["meja"]));
+			//$Date = htmlentities(Strip_tags($_POST["date"]));
+			//$Time = htmlentities(Strip_tags($_POST["time"]));
+			//$People = htmlentities(Strip_tags($_POST["people"]));
+			//$clientrequest = htmlentities(Strip_tags($_POST["clientrequest"]));
+			$syntax= "insert into pesan(meja) values('$Meja')";
+			$BookNow= mysqli_query($link,$syntax);
 
-			$syntax = "insert into pesan (id_pesan,id_pelanggan,meja,date,time,people,clientrequest) values(DEFAULT,'$Id_pelanggan','$Meja','$Date','$Time','$People','$clientrequest')";
-			$BookNow = mysqli_query($link,$syntax);
 
-			if($BookNow){
+			//$syntax = "insert into pesan (id_pesan,id_pelanggan,meja,date,time,people,clientrequest) values(DEFAULT,'$Id_pelanggan','$Meja',$Date','$Time','$People','$clientrequest')";
+			//$BookNow = mysqli_query($link,$syntax);
+
+			/*if($BookNow){
 				$cnt=1;
 				$Pesan_qr= mysqli_query($link,"SHOW TABLE STATUS LIKE 'pesan'");
 				$Pesan_data = mysqli_fetch_assoc($Pesan_qr);
@@ -37,6 +40,6 @@
 			}
 
 		}else {
-		die(mysqli_error($link));
+		die(mysqli_error($link));*/
 	}
 ?>
