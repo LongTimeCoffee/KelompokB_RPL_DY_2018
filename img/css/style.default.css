@@ -1090,56 +1090,15 @@ section.gallery .item .lb-data .lb-caption {
 /* ==========================================
    Booking Section
    ========================================== */
-/*.row .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: white;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 1;
-  top: 150%;
-  left: 50%;
-  margin-left: -60px;
+.nomor {
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  border: black;
+  cursor: pointer;
+  margin: center;
 }
-.row .tooltiptext:after {
-  content: "";
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent black transparent;
-}
-.row:hover .tooltiptext{
-  visibility: visible;
-}*/
-.btn {
- background-color: green;
- border: none;
- color: white;
- padding: 20px;
- text-align: center;
- text-decoration: none;
- display: inline-block;
- font-size: 16px;
- margin: 4px 2px;
- cursor: pointer;
- border-radius: 12px;
-}
-
-.btn:hover {
-  background-color: #14d11b;
-}
-.btn:active {
-  background-color: #024704;
-  box-shadow: 0 5px #666;
-  transform: translateY(2px);
-}
-
 section.booking {
   background: #f5f5f5;
   overflow: hidden;
