@@ -1,19 +1,11 @@
 <?php
     session_start();
     
-        /*if(empty($_SESSION['Nama'])){
+        if(!isset($_SESSION['Nama'])){
             header('location: SignIn.php');
+            exit();
         }
 ?>
-<?php if(isset($_SESSION["Nama"])):?>
-        <?php echo $_SESSION['Nama'];?>
-    <?php endif ?>
-
-    <?php if(isset($_SESSION['id_pelanggan']) and $_SESSION['Nama']==NULL):?>
-        <?php echo $_SESSION['id_pelanggan'];?>
-            <?php endif*/ 
-    ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +21,7 @@
         <meta name="author" content="Bootstrap Temple">
 
         <!-- Page Title -->
-        <title>LongTme Restaurant </title>
+        <title>LongTime</title>
         <!-- Favicon -->
         <link rel="shortcut icon" href="img/favicon.ico">
 
@@ -77,7 +69,7 @@
                                 <li><a href="#menu">Menu</a></li>
                                 <li><a href="#contact">Contact</a></li>
                                 <li><a href="#Struk">Struk</a></li>
-                                <li><a href="SignIn.php">SignIn</a></li>
+                                <!--<li><a href="SignIn.php">SignIn</a></li>-->
                                 <li><a href="SignIn.php?logout='1'">Logout</a></li>
                         
                             </ul>
@@ -183,7 +175,7 @@
             </section>
             <!-- End About Section -->
 
-            <!-- Menu Section -->
+             <!-- Menu Section -->
             <section id="menu" class="menu">
                 <div class="container">
                     <header class="text-center">
@@ -194,45 +186,24 @@
                     <div class="menu">
                         <!-- Tabs Navigatin -->
                         <ul class="nav nav-tabs text-center has-border" role="tablist">
-                            <li role="presentation" class="active"><a href="#makanan" aria-controls="makanan" role="tab" data-toggle="tab">Makanan</a></li>
-                            <!--<li role="presentation"><a href="#lunch" aria-controls="lunch" role="tab" data-toggle="tab">Lunch</a></li>
-                            <li role="presentation"><a href="#dinner" aria-controls="dinner" role="tab" data-toggle="tab">Dinner</a></li>
-                            <li role="presentation"><a href="#party" aria-controls="party" role="tab" data-toggle="tab">Party</a></li>-->
-                            <li role="presentation"><a href="#minuman" aria-controls="minuman" role="tab" data-toggle="tab">Minuman</a></li>
+                            <li role="presentation" class="active"><a href="#breakfast" aria-controls="breakfast" role="tab" data-toggle="tab">Breakfast</a></li>
+                            <li role="presentation"><a href="#drinks" aria-controls="drinks" role="tab" data-toggle="tab">Drinks</a></li>
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
 
                             <!-- Breakfast Panel -->
-                            <!-- Breakfast Panel -->
-                            <div role="tabpanel" class="tab-pane active" id="makanan">
+                            <div role="tabpanel" class="tab-pane active" id="breakfast">
                                 <div class="row">
                                     <!-- item -->
                                     <div class="col-sm-6">
                                         <div class="menu-item clearfix">
-                                        <!--<div class="menu-item recommended has-border clearfix">-->
                                             <div class="item-details pull-left">
-                                                <h5>Wild Mushroom Bucatini with Kale</h5>
-                                                <p>Mushroom / Veggie / White Sources</p>
+                                                 <h5>Burger</h5>
                                             </div>
                                             <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                              <!--  <span class="text-medium">Recommended</span>-->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                        <!--<div class="menu-item recommended has-border clearfix">-->
-                                            <div class="item-details pull-left">
-                                                <h5>Lemon and Garlic Green Beans</h5>
-                                                <p>Lemon / Garlic / Beans</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                              <!--  <span class="text-medium">Recommended</span>-->
+                                                <strong class="text-large text-primary">Rp.10000</strong>
                                             </div>
                                         </div>
                                     </div>
@@ -240,11 +211,21 @@
                                     <div class="col-sm-6">
                                         <div class="menu-item clearfix">
                                             <div class="item-details pull-left">
-                                                <h5>LambBeef Kofka Skewers with Tzatziki</h5>
-                                                <p>Lamb / Wine / Butter</p>
+                                             <h5>Mie Goreng</h5>
                                             </div>
                                             <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
+                                                <strong class="text-large text-primary">Rp.10000</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- item -->
+                                    <div class="col-sm-6">
+                                        <div class="menu-item clearfix">
+                                            <div class="item-details pull-left">
+                                                <h5>Indomie Goreng</h5>
+                                            </div>
+                                            <div class="item-price pull-right">
+                                                <strong class="text-large text-primary">Rp.8000</strong>
 
                                             </div>
                                         </div>
@@ -253,11 +234,10 @@
                                     <div class="col-sm-6">
                                         <div class="menu-item clearfix">
                                             <div class="item-details pull-left">
-                                                <h5>Meatloaf with Black Pepper-Honey BBQ</h5>
-                                                <p>Pepper / Chicken / Honey</p>
+                                                <h5>Roti Bakar Telur Sosis Keju</h5>
                                             </div>
                                             <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
+                                                <strong class="text-large text-primary">Rp.13000</strong>
                                             </div>
                                         </div>
                                     </div>
@@ -265,11 +245,10 @@
                                     <div class="col-sm-6">
                                         <div class="menu-item clearfix">
                                             <div class="item-details pull-left">
-                                                <h5>Imported Oysters Grill (5 Pieces)</h5>
-                                                <p>Oysters / Veggie / Ginger</p>
+                                                <h5>Pisang Bakar Keju</h5>
                                             </div>
                                             <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
+                                                <strong class="text-large text-primary">Rp.15000</strong>
                                             </div>
                                         </div>
                                     </div>
@@ -277,25 +256,10 @@
                                     <div class="col-sm-6">
                                         <div class="menu-item clearfix">
                                             <div class="item-details pull-left">
-                                                <h5>Wild Mushroom Bucatini with Kale</h5>
-                                                <p>Mushroom / Veggie / White Sources</p>
+                                                <h5>Pisang Bakar Milo</h5>
                                             </div>
                                             <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                        <!--<div class="menu-item recommended has-border clearfix">-->
-                                            <div class="item-details pull-left">
-                                                <h5>Lemon and Garlic Green Beans</h5>
-                                                <p>Lemon / Garlic / Beans</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                                <!--<span class="text-medium">Recommended</span>-->
+                                                <strong class="text-large text-primary">Rp.15000</strong>
                                             </div>
                                         </div>
                                     </div>
@@ -303,11 +267,10 @@
                                     <div class="col-sm-6">
                                         <div class="menu-item clearfix">
                                             <div class="item-details pull-left">
-                                                <h5>Wild Mushroom Bucatini with Kale</h5>
-                                                <p>Mushroom / Veggie / White Sources</p>
+                                                <h5>Nugget</h5>
                                             </div>
                                             <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
+                                                <strong class="text-large text-primary">Rp.10000</strong>
                                             </div>
                                         </div>
                                     </div>
@@ -315,11 +278,21 @@
                                     <div class="col-sm-6">
                                         <div class="menu-item clearfix">
                                             <div class="item-details pull-left">
-                                                <h5>LambBeef Kofka Skewers with Tzatziki</h5>
-                                                <p>Lamb / Wine / Butter</p>
+                                                <h5>Churros</h5>
                                             </div>
                                             <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
+                                                <strong class="text-large text-primary">Rp.12000</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- item -->
+                                    <div class="col-sm-6">
+                                        <div class="menu-item clearfix">
+                                            <div class="item-details pull-left">
+                                                <h5>Nasi Goreng</h5>
+                                            </div>
+                                            <div class="item-price pull-right">
+                                                <strong class="text-large text-primary">Rp.12000</strong>
 
                                             </div>
                                         </div>
@@ -328,11 +301,10 @@
                                     <div class="col-sm-6">
                                         <div class="menu-item clearfix">
                                             <div class="item-details pull-left">
-                                                <h5>Meatloaf with Black Pepper-Honey BBQ</h5>
-                                                <p>Pepper / Chicken / Honey</p>
+                                                 <h5>Omelette</h5>
                                             </div>
                                             <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
+                                                <strong class="text-large text-primary">Rp.7000</strong>
                                             </div>
                                         </div>
                                     </div>
@@ -340,11 +312,10 @@
                                     <div class="col-sm-6">
                                         <div class="menu-item clearfix">
                                             <div class="item-details pull-left">
-                                                <h5>Imported Oysters Grill (5 Pieces)</h5>
-                                                <p>Oysters / Veggie / Ginger</p>
+                                                 <h5>Indomie Rebus</h5>
                                             </div>
                                             <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
+                                                <strong class="text-large text-primary">Rp.8000</strong>
                                             </div>
                                         </div>
                                     </div>
@@ -352,419 +323,27 @@
                                     <div class="col-sm-6">
                                         <div class="menu-item clearfix">
                                             <div class="item-details pull-left">
-                                                <h5>Wild Mushroom Bucatini with Kale</h5>
-                                                <p>Mushroom / Veggie / White Sources</p>
+                                                <h5>Kentang Goreng</h5>
                                             </div>
                                             <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
+                                                <strong class="text-large text-primary">15000</strong>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div><!-- End Breakfast Panel-->
 
-                            <!-- lunch Panel -->
-                            <div role="tabpanel" class="tab-pane fade" id="lunch">
-                                <div class="row">
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                        <!--<div class="menu-item recommended has-border clearfix">-->
-                                            <div class="item-details pull-left">
-                                                <h5>Lemon and Garlic Green Beans</h5>
-                                                <p>Lemon / Garlic / Beans</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                                <!--<span class="text-medium">Recommended</span>-->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>LambBeef Kofka Skewers with Tzatziki</h5>
-                                                <p>Lamb / Wine / Butter</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>Meatloaf with Black Pepper-Honey BBQ</h5>
-                                                <p>Pepper / Chicken / Honey</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>Imported Oysters Grill (5 Pieces)</h5>
-                                                <p>Oysters / Veggie / Ginger</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>Wild Mushroom Bucatini with Kale</h5>
-                                                <p>Mushroom / Veggie / White Sources</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>Wild Mushroom Bucatini with Kale</h5>
-                                                <p>Mushroom / Veggie / White Sources</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>LambBeef Kofka Skewers with Tzatziki</h5>
-                                                <p>Lamb / Wine / Butter</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>Meatloaf with Black Pepper-Honey BBQ</h5>
-                                                <p>Pepper / Chicken / Honey</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>Imported Oysters Grill (5 Pieces)</h5>
-                                                <p>Oysters / Veggie / Ginger</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>Wild Mushroom Bucatini with Kale</h5>
-                                                <p>Mushroom / Veggie / White Sources</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- End lunch Panel-->-->
-
-                            <!-- Dinner Panel -->
-                            <div role="tabpanel" class="tab-pane fade" id="dinner">
-                                <div class="row">
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>LambBeef Kofka Skewers with Tzatziki</h5>
-                                                <p>Lamb / Wine / Butter</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>Meatloaf with Black Pepper-Honey BBQ</h5>
-                                                <p>Pepper / Chicken / Honey</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                        <!--<div class="menu-item recommended has-border clearfix">-->
-                                            <div class="item-details pull-left">
-                                                <h5>Lemon and Garlic Green Beans</h5>
-                                                <p>Lemon / Garlic / Beans</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                                <!--<span class="text-medium">Recommended</span>-->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>Imported Oysters Grill (5 Pieces)</h5>
-                                                <p>Oysters / Veggie / Ginger</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>Wild Mushroom Bucatini with Kale</h5>
-                                                <p>Mushroom / Veggie / White Sources</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>Wild Mushroom Bucatini with Kale</h5>
-                                                <p>Mushroom / Veggie / White Sources</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>LambBeef Kofka Skewers with Tzatziki</h5>
-                                                <p>Lamb / Wine / Butter</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>Meatloaf with Black Pepper-Honey BBQ</h5>
-                                                <p>Pepper / Chicken / Honey</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>Imported Oysters Grill (5 Pieces)</h5>
-                                                <p>Oysters / Veggie / Ginger</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>Wild Mushroom Bucatini with Kale</h5>
-                                                <p>Mushroom / Veggie / White Sources</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- End Dinner Panel-->
-
-                            <!-- Party Panel -->
-                            <div role="tabpanel" class="tab-pane fade" id="party">
-                                <div class="row">
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                        <!--<div class="menu-item recommended has-border clearfix">-->
-                                            <div class="item-details pull-left">
-                                                <h5>Lemon and Garlic Green Beans</h5>
-                                                <p>Lemon / Garlic / Beans</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                                <!--<span class="text-medium">Recommended</span>-->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>LambBeef Kofka Skewers with Tzatziki</h5>
-                                                <p>Lamb / Wine / Butter</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>Meatloaf with Black Pepper-Honey BBQ</h5>
-                                                <p>Pepper / Chicken / Honey</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>Imported Oysters Grill (5 Pieces)</h5>
-                                                <p>Oysters / Veggie / Ginger</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>Wild Mushroom Bucatini with Kale</h5>
-                                                <p>Mushroom / Veggie / White Sources</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>Wild Mushroom Bucatini with Kale</h5>
-                                                <p>Mushroom / Veggie / White Sources</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>LambBeef Kofka Skewers with Tzatziki</h5>
-                                                <p>Lamb / Wine / Butter</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>Meatloaf with Black Pepper-Honey BBQ</h5>
-                                                <p>Pepper / Chicken / Honey</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>Imported Oysters Grill (5 Pieces)</h5>
-                                                <p>Oysters / Veggie / Ginger</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <div class="menu-item clearfix">
-                                            <div class="item-details pull-left">
-                                                <h5>Wild Mushroom Bucatini with Kale</h5>
-                                                <p>Mushroom / Veggie / White Sources</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- End Party Panel-->
-
                             <!-- Drinks Panel -->
-                            <div role="tabpanel" class="tab-pane fade" id="minuman">
+                            <div role="tabpanel" class="tab-pane fade" id="drinks">
                                 <div class="row">
                                     <!-- item -->
                                     <div class="col-sm-6">
                                         <div class="menu-item clearfix">
                                             <div class="item-details pull-left">
-                                                <h5>LambBeef Kofka Skewers with Tzatziki</h5>
-                                                <p>Lamb / Wine / Butter</p>
+                                                <h5>Teh Manis</h5>
                                             </div>
                                             <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
+                                                <strong class="text-large text-primary">Rp.5000</strong>
 
                                             </div>
                                         </div>
@@ -773,24 +352,10 @@
                                     <div class="col-sm-6">
                                         <div class="menu-item clearfix">
                                             <div class="item-details pull-left">
-                                                <h5>Meatloaf with Black Pepper-Honey BBQ</h5>
-                                                <p>Pepper / Chicken / Honey</p>
+                                                 <h5>Teh Tarik</h5>
                                             </div>
                                             <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item -->
-                                    <div class="col-sm-6">
-                                        <!--<div class="menu-item recommended has-border clearfix">-->
-                                            <div class="item-details pull-left">
-                                                <h5>Lemon and Garlic Green Beans</h5>
-                                                <p>Lemon / Garlic / Beans</p>
-                                            </div>
-                                            <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
-                                                <!--<span class="text-medium">Recommended</span>-->
+                                                <strong class="text-large text-primary">Rp.8000</strong>
                                             </div>
                                         </div>
                                     </div>
@@ -798,11 +363,10 @@
                                     <div class="col-sm-6">
                                         <div class="menu-item clearfix">
                                             <div class="item-details pull-left">
-                                                <h5>Imported Oysters Grill (5 Pieces)</h5>
-                                                <p>Oysters / Veggie / Ginger</p>
+                                                <h5>Teh Hijau</h5>
                                             </div>
                                             <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
+                                                <strong class="text-large text-primary">Rp.8000</strong>
                                             </div>
                                         </div>
                                     </div>
@@ -810,11 +374,10 @@
                                     <div class="col-sm-6">
                                         <div class="menu-item clearfix">
                                             <div class="item-details pull-left">
-                                                <h5>Wild Mushroom Bucatini with Kale</h5>
-                                                <p>Mushroom / Veggie / White Sources</p>
+                                                <h5>Lemon Tea</h5>
                                             </div>
                                             <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
+                                                <strong class="text-large text-primary">7000</strong>
                                             </div>
                                         </div>
                                     </div>
@@ -822,11 +385,10 @@
                                     <div class="col-sm-6">
                                         <div class="menu-item clearfix">
                                             <div class="item-details pull-left">
-                                                <h5>Wild Mushroom Bucatini with Kale</h5>
-                                                <p>Mushroom / Veggie / White Sources</p>
+                                                <h5>Cold Frappe</h5>
                                             </div>
                                             <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
+                                                <strong class="text-large text-primary">Rp.12000</strong>
                                             </div>
                                         </div>
                                     </div>
@@ -834,11 +396,21 @@
                                     <div class="col-sm-6">
                                         <div class="menu-item clearfix">
                                             <div class="item-details pull-left">
-                                                <h5>LambBeef Kofka Skewers with Tzatziki</h5>
-                                                <p>Lamb / Wine / Butter</p>
+                                                <h5>Cappucino</h5>
                                             </div>
                                             <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
+                                                <strong class="text-large text-primary">Rp.10000</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- item -->
+                                    <div class="col-sm-6">
+                                        <div class="menu-item clearfix">
+                                            <div class="item-details pull-left">
+                                                <h5>Coffee Latte</h5>
+                                            </div>
+                                            <div class="item-price pull-right">
+                                                <strong class="text-large text-primary">Rp.10000</strong>
 
                                             </div>
                                         </div>
@@ -847,11 +419,10 @@
                                     <div class="col-sm-6">
                                         <div class="menu-item clearfix">
                                             <div class="item-details pull-left">
-                                                <h5>Meatloaf with Black Pepper-Honey BBQ</h5>
-                                                <p>Pepper / Chicken / Honey</p>
+                                                <h5>Milk Tea Dingin</h5>
                                             </div>
                                             <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
+                                                <strong class="text-large text-primary">Rp.13000</strong>
                                             </div>
                                         </div>
                                     </div>
@@ -859,11 +430,10 @@
                                     <div class="col-sm-6">
                                         <div class="menu-item clearfix">
                                             <div class="item-details pull-left">
-                                                <h5>Imported Oysters Grill (5 Pieces)</h5>
-                                                <p>Oysters / Veggie / Ginger</p>
+                                                <h5>Green Tea Shake</h5>
                                             </div>
                                             <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
+                                                <strong class="text-large text-primary">Rp.18000</strong>
                                             </div>
                                         </div>
                                     </div>
@@ -871,11 +441,10 @@
                                     <div class="col-sm-6">
                                         <div class="menu-item clearfix">
                                             <div class="item-details pull-left">
-                                                <h5>Wild Mushroom Bucatini with Kale</h5>
-                                                <p>Mushroom / Veggie / White Sources</p>
+                                                 <h5>Milk Shake</h5>
                                             </div>
                                             <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">20$</strong>
+                                                <strong class="text-large text-primary">Rp.15000</strong>
                                             </div>
                                         </div>
                                     </div>
@@ -885,14 +454,13 @@
                     </div>
                 </div>
             </section>
-                            
-                             <!-- End Menu Section -->
+            <!-- End Menu Section -->
 
-
+            <!-- section struk-->
             <div class="Struk">
                 <section id="Struk" class="Struk" >
                     <div class="container text-left">
-                            <h1 class="header">Struk</h1>
+                            <h1 class="header text-center">Struk</h1>
                             <?php
                                 include 'connection.php';
                                 //include 'formsignin.php';
@@ -904,30 +472,37 @@
                                         exit();
                                     }
                                 $cnt=0;
-        
-                                    while($row = mysqli_fetch_array($data)){
-                                        $Nama=$row["Nama"]; 
-                                        $No_hp=$row["No_hp"];  
-                                        $Meja=$row["meja"];
-                                        $Date=$row["date"];
-                                        $Time=$row["time"];
-                                        $People=$row["people"];
-                                        $Clientrequest=$row["clientrequest"];
-                                        $Nama_menu=$row["nama_menu"];
-                                        $Jumlah=$row["jumlah"];  
-                                    } 
-                                    echo "Name : ".$Nama."<br>";
-                                    echo "Number Phone : ".$No_hp."<br>";
-                                    echo "Table : ".$Meja."<br>";
-                                    echo "Date : ".$Date."<br>";
-                                    echo "Time : ".$Time."<br>";
-                                    echo "People : ".$People."<br>";
-                                    echo "Menu : ".$Nama_menu."<br>";
-                                    echo "Spesial request :  ".$Clientrequest."<br>";
-                                    echo "Quantity : ".$Jumlah;
-                            ?>
-                        </div>
+                                    $row = mysqli_fetch_array($data);
+                                    $Nama=$row["Nama"]; 
+                                    $No_hp=$row["No_hp"];  
+                                    $Meja=$row["meja"];
+                                    $Date=$row["date"];
+                                    $Time=$row["time"];
+                                    $People=$row["people"];
+                                    $Clientrequest=$row["clientrequest"];
 
+                                        echo "Name : ".$Nama."<br>";
+                                        echo "Number Phone : ".$No_hp."<br>";
+                                        echo "Table : ".$Meja."<br>";
+                                        echo "Date : ".$Date."<br>";
+                                        echo "Time : ".$Time."<br>";
+                                        echo "People : ".$People."<br>";
+                                        echo "Spesial request :  ".$Clientrequest."<br>";
+
+                                    $Nama_menu=$row["nama_menu"];
+                                    $Jumlah=$row["jumlah"];  
+                                        echo "Menu : ".$Nama_menu."<br>";
+                                        echo "Quantity : ".$Jumlah."<br";
+
+                                    while($row = mysqli_fetch_array($data)){  
+                                        $Nama_menu=$row["nama_menu"];
+                                        $Jumlah=$row["jumlah"];
+                                            echo "Menu : ".$Nama_menu."<br>";
+                                            echo "Quantity : ".$Jumlah. "<br>";
+                                            
+                                        }
+                                    ?>
+                        </div>
                     </section>
                 </div>
 
@@ -963,9 +538,8 @@
             </section>
             <!-- End Booking Section -->
 
-
             <!-- Footer -->
-            <footer id="mainFooter" class="mainFooter">
+           <footer id="mainFooter" class="mainFooter">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 brief">
@@ -973,6 +547,7 @@
                                 <h6>LongTime</h6>
                                 <!--<img src="img/logo-footer.png" alt="italiano" width="100">-->
                             </div>
+
                            <p>Kafe kekinian dimana kamu bisa hangout sepuasnya.</p>
                         </div>
 
@@ -1027,6 +602,7 @@
                 </div>
             </footer>
             <!-- End Footer -->
+           
 
             <!-- scroll top btn -->
             <div id="scrollTop" class="btn-unique">
@@ -1110,37 +686,24 @@
                                                 <label for="cmenu" class="col-sm-6 unique">Menu
                                                     <div id="menu_makanan">
                                                     <br>
-                                                        <select id="cmenu" name="menu1" class="col-sm-9 unique unique">
-                                                            <optgroup label="Makanan">
-                                                            <option value1 ="value1">Burger</option>
-                                                            <option value1 ="value2">Mie Goreng</option>
-                                                            <option value1 ="value3">Indomie Goreng</option>
-                                                            <option value1 ="value4">Roti Bakar Telur Sosis keju</option>
-                                                            <option value1 ="value5">Pisang Bakar Keju</option>
-                                                            <option value1 ="value6">Pisang Bakar Milo</option>
-                                                            <option value1 ="value7">Nugget</option>
-                                                            <option value1 ="value8">Churros</option>
-                                                            </optgroup>
-                                                            <optgroup label="Minuman">
-                                                            <option value1="value9">Teh Manis</option>
-                                                            <option value1="value10">Teh Tarik</option>
-                                                            <option value1="value11">Teh Hijau </option>
-                                                            <option value1="value12">Lemon Tea</option>
-                                                            <option value1="value13">Cappucino</option>
-                                                            <option value1="value14">coffee Latte</option>
-                                                            <option value1="value15">Milk Tea Dingin</option>
-                                                            <option value1="value16">Green Tea Shake</option>
-                                                            <option value1="value17">Milk Shake</option>
-                                                            <option value1="value18">Cold Frappe</option>
-                                                            <option value1="value19">Chocolate Blast</option>
-                                                            <option value1="value20">Mocha Float</option>
-                                                            <option value1="value21">Orange Juice</option>
-                                                            <option value1="value22">Avocado Juice</option>
-                                                            <option value1="value2 3">Melon Juice</option>
-                                                            <option value1="value24">Papaya Juice</option>
-                                                            <option value1="value25">Manggo Juice</option>
-                                                        </optgroup>
-                                                        </select>
+                                                    
+                                                    <select id="cmenu" name="menu1" class="col-sm-9 unique unique">
+
+                                                    <?php
+                                                        include 'connection.php';
+
+                                                        $menu_makanan= "select * from nama_menu";
+                                                        $data=mysqli_query($link,$menu_makanan);
+
+                                                        while($row=mysqli_fetch_array($data)){
+                                                             $Nama_Menu=$row["Nama_Menu"];
+                                                        // $Harga=$row["Harga"];
+                                                             echo "<option value1 =\"$Nama_Menu\">" .$Nama_Menu. "</option>";
+                                                        
+                                                        }
+                                                        ?>
+                                                     </select>
+                                                        
                                                     <input name="jumlah_menu1" type="number" id="cmenu" min="1" required>
                                                     </br>
                                                     </div>
@@ -1194,31 +757,18 @@
                     var isi = $("#menu_makanan").html();
                     isi += "<br>";
                     isi += "<select id=\"cmenu\" name=\"menu"+cnt+"\" class=\"col-sm-6 unique unique\">";
-                    isi += "<option value1 =\"value1\">Burger</option>";
-                    isi +=" <option value1 =\"value2\">Mie Goreng</option";
-                    isi +=" <option value1 =\"value3\">Mie Goreng</option>";
-                    isi +=" <option value1 =\"value4\">Roti Bakar Telur Sosis keju</option>";
-                    isi +=" <option value1 =\"value5\">Pisang Bakar Keju</option>";
-                    isi +=" <option value1 =\"value6\">Pisang Bakar Milo</option>";
-                    isi +=" <option value1 =\"value7\">Nugget</option>";
-                    isi +=" <option value1 =\"value8\">Churros</option>";
-                    isi +=" <option value1 =\"value9\">Teh Manis</option>";
-                    isi +=" <option value1 =\"value10\">Teh Tarik</option>";
-                    isi +=" <option value1 =\"value11\">Teh Hijau</option>";
-                    isi +=" <option value1 =\"value12\">Lemon Tea</option>";
-                    isi +=" <option value1 =\"value13\">Cappucino</option>";
-                    isi +=" <option value1 =\"value14\">coffee Latte</option>";
-                    isi +=" <option value1 =\"value15\">Milk Tea Dingin</option>";
-                    isi +=" <option value1 =\"value16\">Green Tea Shake</option>";
-                    isi +=" <option value1 =\"value17\">Milk Shake</option>";
-                    isi +=" <option value1 =\"value18\">Cold Frappe</option>";
-                    isi +=" <option value1 =\"value19\">Chocolate Blast</option>";
-                    isi +=" <option value1 =\"value20\">Mocha Float</option>";
-                    isi +=" <option value1 =\"value21\">Orange Juice</option>";
-                    isi +=" <option value1 =\"value22\">Avocado Juice</option>";
-                    isi +=" <option value1 =\"value23\">Melon Juice</option>";
-                    isi +=" <option value1 =\"value24\">Papaya Juice</option>";
-                    isi +=" <option value1 =\"value25\">Manggo Juice</option>";
+
+                   <?php
+                     include 'connection.php';
+                    $menu_makanan= "select * from nama_menu";
+                    $data=mysqli_query($link,$menu_makanan);
+                    while($row=mysqli_fetch_array($data)){
+                     $Nama_Menu=$row["Nama_Menu"];
+
+                        echo "isi += \"<option value1 =\\\"$Nama_Menu\\\">" .$Nama_Menu. "</option>\";\n";
+                                                        
+                    }
+                ?>
                     isi += " <input name=\"jumlah_menu"+cnt+"\" type=\"number\" id=\"cmenu\" min=\"1\" required></br>";
 
                     $("#menu_makanan").html(isi);
