@@ -10,6 +10,32 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <style>
+
+            class-center{
+                font-size: 16px;
+
+            }
+            table {
+                font-family: PT serif ,arial, sans-serif, ;
+                font-size: 30 px;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: center;
+                padding: 8px;
+
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
+
+        
         <meta charset="utf-8">
         <!-- Responsive meta -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,18 +95,19 @@
                                 <li><a href="#menu">Menu</a></li>
                                 <li><a href="#gallery">Gallery</a></li>
                                 
+                                <li><a href=#OrderHistory>History Order</a></li>
                                 <?php 
-                                if(isset($_SESSION['Nama'])){
-                                    echo "<li><a href=\"#Struk\">Struct</a></li>";
-                                }
-                                ?>
+                                //if(isset($_SESSION['Nama'])){
+                                    //echo "<li><a href=\"#Struk\">Struct</a></li>";
+                                //}
+                                //?>
                                  <li><a href="#contact">Contact</a></li>
                                  <?php
                                     if(isset($_SESSION['Nama'])){
                                         echo "<li><a href=\"index.php?logout='1'\">Logout</a></li> ";
                                     }
                                     else{
-                                        echo " <li><a href=\"SignIn.php\"><u>Sign In</u></a></li>";
+                                        echo " <li><a href=\"SignIn.php\"><u>Login</u></a></li>";
                                     }
                                 ?>
                             </ul>
@@ -556,17 +583,60 @@
                         </div>
                     </div>
                 </div>
-                
-               <!-- <nav id="nav-dots" class="nav-dots">
-                        <span class="nav-dot-current"></span>
-                        <span></span>
-                        <span></span>
-                    </nav>-->            
             </section>
+
+            <!--Order History-->
+            <?php if (isset($_SESSION['id_pelanggan'])) : ?>
+                <div class="Order" class="Order">
+                <section id=OrderHistory class="Order">
+                    <div class="container">
+                        <header>
+                        <h1 class="header text-center"> History Order</h1>
+                        <h3 class="header text-center"> Your Order </h3>
+                        </header>
+
+                       <?php
+                        include 'connection.php';
+                        $id_pelanggan= $_SESSION["id_pelanggan"];
+                                 // $sql = "SELECT akun.id_pelanggan,akun.Nama,akun.No_hp, pesan.meja,pesan.date,pesan.time,pesan.people,pesan.clientrequest,menu.id_namamenu,menu.jumlah,menu.harga,nama_menu.Nama_Menu,nama_menu.Harga From akun join pesan on akun.id_pelanggan=pesan.id_pelanggan join menu on pesan.id_pesan=menu.id_pesan join nama_menu on menu.id_namamenu=nama_menu.id_namamenu where akun.Nama= '$Nama'";
+                                $sql = "select * from pesan where id_pelanggan=$id_pelanggan";
+                                $data = mysqli_query($link, $sql);
+                        ?>
+                        <!--<table width="100%" align='center'>-->
+                            <table class="table table-stripped">
+                            <thead>
+                            <tr align="center">
+                            <th class="text-center"><b>Nama</b></th>
+                            <th class="text-center"><b>Meja</b></th>
+                            <th class="text-center"><b>Tanggal</b></th>
+                            <th class="text-center"><b>Jam</b></th>
+                            <th class="text-center"><b>Keterangan</b></th>
+                            </tr>
+                        </thead>
+                            <?php
+                             while($row = mysqli_fetch_array($data)){
+                                echo"<tr align='center'>
+                                    <td>".$_SESSION["id_pelanggan"]."</td> 
+                                    <td>".$row['meja']."</td>
+                                    <td>".$row['date']."</td>
+                                    <td>".$row['time']."</td>
+                                    <td><a href=more.php?id_pesanan=$row[id_pesan]><b>More</b></a></td>
+                                    </tr>";
+                                }
+                            
+                            ?>
+
+
+                        </tbody>
+                        </table>                            
+                    </div>
+                </section>
+                </div>
+            <?php endif; ?>
             <!-- End Gallery Section -->
                             
             <!-- section struk-->
-            <div class="struk" class="struk">
+           <!-- <div class="struk" class="struk">
                 <section id="Struct" class="struk" >
                     <div class="container">
                     <div class="form-holder"> 
@@ -575,9 +645,9 @@
                             <h3 class="header text-center">Your order</h3>
                             <br>
                             <?php
-                                include 'connection.php';
+                               /* include 'connection.php';
                                 $Nama= $_SESSION["Nama"];
-                                 $sql = "SELECT akun.id_pelanggan,akun.Nama,akun.No_hp, pesan.meja,pesan.date,pesan.time,pesan.people,pesan.clientrequest,menu.nama_menu,menu.jumlah,menu.harga From akun join pesan on akun.id_pelanggan=pesan.id_pelanggan join menu on pesan.id_pesan=menu.id_pesan where akun.Nama= '$Nama'";
+                                 $sql = "SELECT akun.id_pelanggan,akun.Nama,akun.No_hp, pesan.meja,pesan.date,pesan.time,pesan.people,pesan.clientrequest,menu.id_namamenu,menu.jumlah,menu.harga,nama_menu.Nama_Menu,nama_menu.Harga From akun join pesan on akun.id_pelanggan=pesan.id_pelanggan join menu on pesan.id_pesan=menu.id_pesan join nama_menu on menu.id_namamenu=nama_menu.id_namamenu where akun.Nama= '$Nama'";
                                 $data = mysqli_query($link, $sql);
 
 
@@ -586,7 +656,7 @@
                                         exit();
                                     }
                                 $cnt=0;
-                                    $row = mysqli_fetch_array($data);
+                                 $row = mysqli_fetch_array($data);
                                     $Nama=$row["Nama"]; 
                                     $No_hp=$row["No_hp"];  
                                     $Meja=$row["meja"];
@@ -594,36 +664,41 @@
                                     $Time=$row["time"];
                                     $People=$row["people"];
                                     $Clientrequest=$row["clientrequest"];
-                                    $Harga=$row["harga"];
+                                    $Harga=$row["Harga"];
+                                    $Nama_menu=$row["Nama_Menu"];
+                                    $Jumlah=$row["jumlah"];
 
 
+                                    $Harga *= $Jumlah;
                                         echo "Name : ".$Nama."<br>";
                                         echo "Number Phone : ".$No_hp."<br>";
                                         echo "Table : ".$Meja."<br>";
                                         echo "Date : ".$Date."<br>";
                                         echo "Time : ".$Time."<br>";
                                         echo "People : ".$People."<br>";
-                                        echo "Spesial request :  ".$Clientrequest."<br>";
+                                        echo "jumlah : ".$Jumlah."<br>";
                                         echo "Harga : ".$Harga. "<br>";
+                                        echo "Nama_Menu : ".$Nama_menu. "<br>";
+                                        echo "Spesial request :  ".$Clientrequest."<br>";
 
-                                    $Nama_menu=$row["nama_menu"];
+                                  $Nama_menu=$row["Nama_Menu"];
                                     $Jumlah=$row["jumlah"];  
                                         echo "Menu : ".$Nama_menu."<br>";
                                         echo "Quantity : ".$Jumlah."<br>";
                                         echo "Harga : ".$Harga."<br>";
 
                                     while($row = mysqli_fetch_array($data)){  
-                                        $Nama_menu=$row["nama_menu"];
+                                        $Nama_menu=$row["Nama_Menu"];
                                         $Jumlah=$row["jumlah"];
                                             echo "Menu : ".$Nama_menu."<br>";
                                             echo "Quantity : ".$Jumlah. "<br>";
                                             echo "Harga :  ".$Harga."<br>";
-                                        } 
+                                        } */
                                     ?>
                                 </div>
                         </div>
                     </section>
-                </div>
+                </div>-->
 
 
             <!-- End Booking Section -->
@@ -805,9 +880,10 @@
 
                                                         while($row=mysqli_fetch_array($data)){
                                                              $Nama_Menu=$row["Nama_Menu"];
-                                                            $Harga=$row["Harga"];
-                                                            echo "<option value1={\"$Nama_Menu, $Harga\"}>".$Nama_Menu." ".$Harga. "</option>";
-                                                            // echo "<option value1 =\"$Nama_Menu\">" .$Nama_Menu."</option>";
+                                                             $id_namamenu = $row['id_namamenu'];
+                                                            $harga=$row["Harga"];
+                                                            // echo "<option value1={\"$Nama_Menu, $Harga\"}>".$Nama_Menu." ".$Harga. "</option>";
+                                                            echo "<option value=\"$id_namamenu|$harga\">" .$Nama_Menu."</option>";
                                                              
                                                         }
                                                         ?>
@@ -854,6 +930,8 @@
         <script src="js/jquery.validate.min.js"></script>
         <script src="js/jquery-ui/jquery-ui.min.js"></script>
         <script src="js/smooth.scroll.min.js"></script>
+        <script src="js/notify.js"></script>
+        <script src="js/meja.js"></script>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0dSWcBx-VghzhzQB6oCMTgeXMOhCYTvk"></script>
         <script src="js/map.min.js"></script>
         <script src="js/script.js"></script>
@@ -873,9 +951,11 @@
                     $data=mysqli_query($link,$menu_makanan);
                     while($row=mysqli_fetch_array($data)){
                      $Nama_Menu=$row["Nama_Menu"];
+                     $id_namamenu = $row["id_namamenu"];
+                     $harga = $row["Harga"];
 
-                        echo "isi += \"<option value1 ={\\\"$Nama_Menu\\ $Harga\\\"}>" .$Nama_Menu. " " .$Harga."</option>\";\n";
-                        //echo "isi += \"<option value1 =\\\"$Nama_Menu\\\">" .$Nama_Menu. "</option>\";\n";                                  
+                        // echo "isi += \"<option value1 ={\\\"$Nama_Menu\\ $Harga\\\"}>" .$Nama_Menu. " " .$Harga."</option>\";\n";
+                        echo "isi += \"<option value=\\\"$id_namamenu|$harga\\\">" .$Nama_Menu. "</option>\";\n";                                  
                     }
                 ?>
                     isi += " <input name=\"jumlah_menu"+cnt+"\" type=\"number\" id=\"cmenu\" min=\"1\" required></br>";
