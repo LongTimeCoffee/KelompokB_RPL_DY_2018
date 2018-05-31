@@ -6,13 +6,11 @@
 		$Id_pelanggan = " ";
 		$Nama = htmlentities(strip_tags($_POST["Nama"]));	
 		$Password = htmlentities(strip_tags(hash('sha256', $_POST["Password"])));
-
-
+		
 	$syntax= "select * from akun where Nama ='$Nama' and Password = '$Password' ";
 
 		$login= mysqli_query($link,$syntax);
 		if ($login){
-
 
 			if(mysqli_num_rows($login) == 1){
 			$var = mysqli_fetch_assoc($login);
@@ -22,7 +20,6 @@
 			header("HTTP/1.1 302 Moved Temporarily");
 			header("location: index.php");
 			exit();
-
 		} else {
 			$error = "Username/ password combination incorrect";
 			header("HTTP/1.1 302 Moved Temporarily");
@@ -35,6 +32,5 @@
 
 		die(mysqli_error($link));
 	}
-
 }
 ?>

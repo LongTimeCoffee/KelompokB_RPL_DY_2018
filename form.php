@@ -21,6 +21,7 @@ include('connection.php');
 			$_SESSION ['message']= "you are now logged in";
 			$_SESSION ['Nama']= $Nama;
 			header("HTTP/1.1 302 Moved Temporarily");
+			//header("location : SignIn.php");
 			header("location : index.php");
 			exit();
 
@@ -41,8 +42,4 @@ include('connection.php');
 	}else {
 		die(mysqli_error($link));
 	}
-		
-		//$syntax= "insert into akun values ('$id','$nama','$no_hp','$email','$alamat','$password')";
-		
-		//$SignUp= mysqli_query($link,$syntax);	
 ?>
