@@ -138,3 +138,9 @@ color: #010f05;
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
+
+
+.container-content{
+    width: 500px;
+    height : 500px;
+}
