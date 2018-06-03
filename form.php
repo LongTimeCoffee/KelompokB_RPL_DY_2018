@@ -1,7 +1,6 @@
 <?php
 	session_start();
-
-include('connection.php');
+	include('connection.php');
 	if(!empty($_POST)){
 		$Id = " ";
 		$Nama = htmlentities(strip_tags($_POST["Nama"]));
@@ -20,9 +19,10 @@ include('connection.php');
 		if($SignUp){
 			$_SESSION ['message']= "you are now logged in";
 			$_SESSION ['Nama']= $Nama;
+			$_SESSION ['id_pelanggan']= $Id;
 			header("HTTP/1.1 302 Moved Temporarily");
-			//header("location : SignIn.php");
-			header("location : index.php");
+			header("location : SignIn.php");
+			// header("location : index.php");
 			exit();
 
 		} else{
