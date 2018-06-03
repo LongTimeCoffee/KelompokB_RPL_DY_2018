@@ -1,6 +1,7 @@
 <?php
 	include ('connection.php');
 	session_start();
+
 		if(!empty($_POST)){
 			$Id_pelanggan = $_SESSION["id_pelanggan"];
 			$Meja = htmlentities(Strip_tags($_POST["meja"])); 
@@ -19,17 +20,26 @@
 				$Id_pesan=$Pesan_data["Auto_increment"]-1;
 				while(isset($_POST["menu".$cnt])){
 					$Id_menu = " ";
-					$Nama_menu = htmlentities(Strip_tags($_POST["menu".$cnt]));
+					$id_namamenu = htmlentities(Strip_tags($_POST["menu".$cnt]));
 					$Jumlah = htmlentities(Strip_tags($_POST["jumlah_menu".$cnt]));
+					list($id_namamenu,$harga) = explode('|', $_POST["menu".$cnt]);
 
-					$temp = "insert into menu(id_menu, nama_menu, jumlah, id_pesan) values(DEFAULT, '$Nama_menu', '$Jumlah', '$Id_pesan')";
+					$temp = "insert into menu(id_menu, harga, id_namamenu, jumlah, id_pesan) values(DEFAULT, '$harga', $id_namamenu, '$Jumlah', '$Id_pesan')";
 					$input_menu = mysqli_query($link, $temp);
 					if(!$input_menu){
 						die(mysqli_error($link));
 					}
 					$cnt++;
 				}
-				header("location:index.php#reservation-modal");
+
+				// $sql = "update meja set status= '1' where No_meja = '$Meja'";
+				// $result = mysqli_query($link, $sql);
+
+				//header("location:index.php#reservation-modal");
+				header("location:index.php?berhasilbook");
+					//echo "<script>
+                		//alert('Booking berhasil dilakukan');
+        			//</script>";
 			}
 			else{
 				die(mysqli_error($link));
