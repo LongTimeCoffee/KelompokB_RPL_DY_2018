@@ -24,7 +24,7 @@ $sql = "INSERT INTO nama_menu (Nama_Menu, Kategori, Harga) VALUES ('$menu','$kat
 
 if (mysqli_query($conn, $sql))
 {  
-  header("Location: /ADMIN/tambahmenu.php");
+  header("Location: ../ADMIN/tambahmenu.php");
 }
 else {
     echo "Error :" . $sql . mysqli_error($conn);
