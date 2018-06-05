@@ -100,7 +100,7 @@
                                         echo "<li><a href=\"index.php?logout='1'\">Logout</a></li> ";
                                     }
                                     else{
-                                        echo " <li><a href=\"SignIn.php\"><u>Login</u></a></li>";
+                                        echo " <li><a href=\"login.php\"><u>Login</u></a></li>";
                                     }
                                 ?>
                             </ul>
