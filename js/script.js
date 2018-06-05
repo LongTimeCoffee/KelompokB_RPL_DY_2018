@@ -114,9 +114,53 @@ $(document).ready(function () {
         $('body').css({'overflow': 'hidden'});
 
         setTimeout(function () {
-            $('#reservation-modal').addClass('is-visible');
+            $(".pages-reservasi").hide();
+			$(".page1").show();
+			$('#reservation-modal').addClass('is-visible');
         }, 100);
     });
+	
+	function nextToPage3(){
+		$(".page1").hide();
+		$(".page2").hide();
+		$(".page3").show();
+	}
+	//$("#nextBtnMenuPage2").click(function(){
+		
+	//});
+	
+	
+	//$("#nextBtnMenuPage1").click(function(){
+	function nextToPage2(){
+		alert("asad");
+		$(".page1").hide();
+		$(".page2").show();
+		$(".page3").hide();
+	}
+	//});
+	
+	$("#prevBtnMeja").click(function(){
+		$(".page1").show();
+		$(".page2").hide();
+		$(".page3").hide();
+		
+	});
+	
+	$("#prevBtnMeja").click(function(){
+		$(".page1").hide();
+		$(".page2").show();
+		$(".page3").hide();
+		
+	});
+	
+	
+	$(".btn-meja").click(function(){
+		alert('asds');
+		$(".btn-meja").removeClass("btn-meja-pilih"); 
+		$(this).addClass("btn-meja-pilih");
+		var noMeja = $(this).attr("idMeja");
+		$("#noMeja").val(noMeja);
+	});
 
     $('#close').click(function () {
         $('.reservation-overlay').fadeOut();

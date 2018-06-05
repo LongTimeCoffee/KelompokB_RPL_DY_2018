@@ -11,23 +11,17 @@
 <html lang="en">
     <head>
         <style>
-
-            class-center{
-                font-size: 16px;
-
-            }
+            
             table {
-                font-family: PT serif ,arial, sans-serif, ;
-                font-size: 30 px;
+                font-family: arial, sans-serif, ;
                 border-collapse: collapse;
                 width: 100%;
             }
 
             td, th {
-                border: 1px solid #dddddd;
+                border: 2px solid #black;
                 text-align: center;
                 padding: 8px;
-
             }
 
             tr:nth-child(even) {
@@ -71,6 +65,7 @@
         <link rel="stylesheet" href="css/style.default.css">
 
         <link rel="stylesheet" href="js/jquery-ui/jquery-ui.min.css">
+
         <!-- Modernizr -->
         <script type="text/javascript" src="js/modernizr.custom.79639.min.js"></script>
         
@@ -94,20 +89,18 @@
                                 <li><a href="#about">About</a></li>
                                 <li><a href="#menu">Menu</a></li>
                                 <li><a href="#gallery">Gallery</a></li>
-                                
-                                <li><a href=#OrderHistory>History Order</a></li>
-                                <?php 
-                                //if(isset($_SESSION['Nama'])){
-                                    //echo "<li><a href=\"#Struk\">Struct</a></li>";
-                                //}
-                                //?>
+                                <?php
+                                if(isset($_SESSION['Nama'])){
+                                    echo "<li><a href=\"#OrderHistory\">History Order</a></li>";
+                                }
+                                ?>
                                  <li><a href="#contact">Contact</a></li>
                                  <?php
                                     if(isset($_SESSION['Nama'])){
                                         echo "<li><a href=\"index.php?logout='1'\">Logout</a></li> ";
                                     }
                                     else{
-                                        echo " <li><a href=\"SignIn.php\"><u>Login</u></a></li>";
+                                        echo " <li><a href=\"login.php\"><u>Login</u></a></li>";
                                     }
                                 ?>
                             </ul>
@@ -239,17 +232,21 @@
                             <div role="tabpanel" class="tab-pane active" id="breakfast">
                                 <div class="row">
                                     <!-- item -->
+                                    
                                     <div class="col-sm-6">
                                         <div class="menu-item clearfix">
                                             <div class="item-details pull-left">
-                                                 <h5>Burger</h5>
+                                                <!-- <img src="img/Burger.jpg" width="100" height="70">
+                                                <font size="5" font-family : PT Serif', serif; >Burger</font> -->
+                                                <h5>Burger</h5>
+                                                 
                                             </div>
                                             <div class="item-price pull-right">
-                                                <strong class="text-large text-primary">Rp.10000</strong>
+                                                <strong class="text-large text-primary">Rp.15000</strong>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- item -->
+                                         <!-- item -->
                                     <div class="col-sm-6">
                                         <div class="menu-item clearfix">
                                             <div class="item-details pull-left">
@@ -497,6 +494,7 @@
                 </div>
             </section>
             <!-- End Menu Section -->
+                                   
                <!-- Gallery Section -->
             <section id="gallery" class="gallery">
                 <div class="container text-center">
@@ -599,18 +597,19 @@
                         include 'connection.php';
                         $id_pelanggan= $_SESSION["id_pelanggan"];
                                  // $sql = "SELECT akun.id_pelanggan,akun.Nama,akun.No_hp, pesan.meja,pesan.date,pesan.time,pesan.people,pesan.clientrequest,menu.id_namamenu,menu.jumlah,menu.harga,nama_menu.Nama_Menu,nama_menu.Harga From akun join pesan on akun.id_pelanggan=pesan.id_pelanggan join menu on pesan.id_pesan=menu.id_pesan join nama_menu on menu.id_namamenu=nama_menu.id_namamenu where akun.Nama= '$Nama'";
-                                $sql = "select * from pesan where id_pelanggan=$id_pelanggan";
+                                $sql = "select pesan.*, pembayaran.total from pesan left join pembayaran on pesan.id_pesan =pembayaran.id_pesan where pesan.id_pelanggan=$id_pelanggan";
                                 $data = mysqli_query($link, $sql);
                         ?>
                         <!--<table width="100%" align='center'>-->
-                            <table class="table table-stripped">
-                            <thead>
+                            <table cellpadding="50" class="table">
+                            <thead color="Green">
                             <tr align="center">
-                            <th class="text-center"><b>Nama</b></th>
-                            <th class="text-center"><b>Meja</b></th>
-                            <th class="text-center"><b>Tanggal</b></th>
-                            <th class="text-center"><b>Jam</b></th>
-                            <th class="text-center"><b>Keterangan</b></th>
+                            <th class="text-center"><b>CUSTOMER ID</b></th>
+                            <th class="text-center"><b>TABLE</b></th>
+                            <th class="text-center"><b>DATE</b></th>
+                            <th class="text-center"><b>TIME</b></th>
+                            <th class="text-center"><b>STATUS</b></th>
+                            <th class="text-center"><b>DETAIL</b></th>
                             </tr>
                         </thead>
                             <?php
@@ -620,6 +619,7 @@
                                     <td>".$row['meja']."</td>
                                     <td>".$row['date']."</td>
                                     <td>".$row['time']."</td>
+                                    <td>".($row['total'] == null ? 'Belum Dibayar' : 'Telah Dibayar')."</td>
                                     <td><a href=more.php?id_pesanan=$row[id_pesan]><b>More</b></a></td>
                                     </tr>";
                                 }
@@ -808,11 +808,32 @@
                                 <h3>Book your table now</h3>
 
                                 <div class="pages-reservasi page1">
+                                    <div id="booking-form-alternative" method="post" action="Reservasi.php">
+                                       <div class="row">
+                                            <div class="col-md-push-1 col-sm-10">
+                                                <div class="row">
+                                                    <input type="hidden" id="noMeja" name="meja" value="0">
+                                                    <label for="cdate" class="col-sm-6 unique">Date
+                                                        <input onchange="updateDate()" type="text" id="pdate" data-language='en' required>
+                                                    </label>
+
+                                                    <label for="time-alt" class="col-sm-6 unique">Time
+                                                        <input id="time" onchange="updateTime()" type="time" required>
+                                                    </label>
+                                                </div>
+                                                <button class="btn btn-lg" type="button" onclick="nextToPage2()" id="nextBtnMenuPage1">Next</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pages-reservasi page2">
                                 <div id="booking-form-alternative" method="post" action="Reservasi.php">
                                    <div class="row">
                                         <div class="col-md-push-1 col-sm-10">
                                             <div class="row">
-                                                <div class=col-sm-4>
+                                                <div id="data-meja"></div>
+                                                <!-- <div class=col-sm-4>
                                                     <p><button class="btn btn-lg btn-meja" name="meja" idMeja="1"><b>01</b></button></p><br>
                                                     <p><button class="btn btn-lg btn-meja" name="meja" idMeja="2"><b>02</b></button></p><br>
                                                     <p><button class="btn btn-lg btn-meja" name="meja" idMeja="3"><b>03</b></button></p><br>
@@ -835,8 +856,10 @@
                                                     <p><button class="btn btn-lg btn-meja" name="meja" idMeja="16"><b>16</b></button></p><br>
                                                     <p><button class="btn btn-lg btn-meja" name="meja" idMeja="17"><b>17</b></button></p><br>
                                                     <p><button class="btn btn-lg btn-meja" name="meja" idMeja="18"><b>18</b></button></p><br>
-                                                </div>
-                                                <button class="btn btn-lg" type="button" id="nextBtnMenu">Next</button>
+                                                </div> -->
+                                                <br>
+                                                <button class="btn btn-lg" type="button" onclick="prevToPage1()">Previous</button> 
+                                                <button class="btn btn-lg" type="button" onclick="nextToPage3()" id="nextBtnMenuPage2">Next</button>
 
                                                     </div>
                                                 </div>
@@ -845,22 +868,24 @@
                                     </div>
                                     
 
-                                <div class="pages-reservasi page2">
+                                <div class="pages-reservasi page3">
                                 <form method="post"  action="Reservasi.php">
                                     <div class="row">
                                         <div class="col-md-push-1 col-sm-10">
                                             <div class="row">
                                                 
-                                                    
-                                                <!--<button type="button" id="nextBtn" onclick="nextPrev(1)"><a href=" ">Next</button>-->
                                                 <input type="hidden" id="noMeja" name="meja" value="0">
+                                                <input type="hidden" name="date" value="0">
+                                                <input type="hidden" name="time" value="0">
+                                                <!--<button type="button" id="nextBtn" onclick="nextPrev(1)"><a href=" ">Next</button>-->
+                                                <!--<input type="hidden" id="noMeja" name="meja" value="0">
                                                 <label for="cdate" class="col-sm-6 unique">Date
                                                     <input name="date" type="text" id="pdate" data-language='en' required>
                                                 </label>
 
                                                 <label for="time-alt" class="col-sm-6 unique">Time
                                                     <input name="time" type="text" id="time-alt" class="timepicker" required>
-                                                </label>
+                                                </label>-->
 
                                                  <label for="cpeople" class="col-sm-6 unique">How Many People
                                                     <input name="people" type="number" id="cpeople" min="1" required>
@@ -898,7 +923,7 @@
                                                 <label for="request-alt" class="col-sm-12 unique">Special Request
                                                     <textarea id="request-alt" name="clientrequest" ></textarea>
                                                     <div class="col-sm-12">
-                                                        <button class="btn btn-lg" type="button" id="prevBtnMeja">Previous</button> 
+                                                        <button class="btn btn-lg" type="button" id="prevBtnMeja" onclick="prevToPage3()">Previous</button> 
                                                         <button type="submit" class="btn-unique" value="BookNow" >Book Now</button>
                                                 </div>
                                             </label>
@@ -937,6 +962,63 @@
         <script src="js/script.js"></script>
 
         <script>
+            function nextToPage3(){
+                $(".page1").hide();
+                $(".page2").hide();
+                $(".page3").show();
+            }
+
+            function nextToPage2(){
+                $.post("getMeja.php", {date : $("#pdate").val(), time: $("input[name=time]").val()}, function(data, status){
+                    if (status == 'success') {
+                        $('#data-meja').html(data);
+
+                        $("#data-meja .btn-meja").click(function(){
+                            $("#data-meja .btn-meja").removeClass("btn-meja-pilih"); 
+                            $(this).addClass("btn-meja-pilih");
+                            var noMeja = $(this).attr("idMeja");
+                            $("input[name=meja]").val(noMeja);
+                        });
+                    }else{
+                        alert('Gagal mengambil data meja.');
+                    }
+                });
+
+                $(".page1").hide();
+                $(".page2").show();
+                $(".page3").hide();
+            }
+
+            function prevToPage1(){
+                $(".page1").show();
+                $(".page3").hide();
+                $(".page2").hide();
+            }
+
+            function prevToPage2(){
+                $(".page1").hide();
+                $(".page2").show();
+                $(".page3").hide();
+            }
+
+            function updateDate(){
+                var date = $("#pdate").val();
+                $("input[name=date]").val(date);
+            }
+
+            function updateTime(){
+                var time = $("#time").val();
+                $("input[name=time]").val(time);
+            }
+
+            $("#data-meja .btn-meja").click(function(){
+                alert('masuk');
+                $("#data-meja .btn-meja").removeClass("btn-meja-pilih"); 
+                $(this).addClass("btn-meja-pilih");
+                var noMeja = $(this).attr("idMeja");
+                $("input[name=meja]").val(noMeja);
+            });
+
             $(document).ready(function(){
                 var cnt=1;
                 $("#tbl_tambah").click(function(){
@@ -982,7 +1064,7 @@
     <?php
         if(isset($_GET["berhasilbook"])){
             echo "<script>
-                alert('Berhasil Booking!');
+                alert('Booking successful! click history order for more');
         </script>";
       } 
     ?>    

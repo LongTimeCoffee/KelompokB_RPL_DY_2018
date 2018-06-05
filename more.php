@@ -6,20 +6,39 @@
     <head>
 
         <style>
+            button{
+                background-color: white;
+                position: relative;
+                border : 2px solid #7fb401;
+                color: black;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 13px;
+                margin: 4px 2px;
+                border-radius: 2px;
+                cursor: pointer;
+            }
+
+            button:hover{
+                background-color: #7fb401;
+                color : white;
+            }
 
             class-center{
                 font-size: 30pt;
 
             }
             table {
-                font-family: PT serif ,arial, sans-serif, ;
+                font-family: PT serif ,arial, sans-serif,;
                 font-size: 30 px;
                 border-collapse: collapse;
                 width: 100%;
             }
 
             td, th {
-                border: 1px solid #dddddd;
+                border: 1px solid #black;
                 text-align: center;
                 padding: 8px;
 
@@ -125,11 +144,11 @@
                          <table class="table">
                             <thead>
                             <tr align="center">
-                            <th class="text-center"><b>JUMLAH ORANG</b></th>
-                            <th class="text-center"><b>NAMA MENU</b></th>
-                            <th class="text-center"><b>SPESIAL REQUEST</b></th>
-                            <th class="text-center"><b>JUMLAH</b></th>
-                            <th class="text-center"><b>HARGA</b></th>
+                            <th class="text-center"><b>PEOPLE</b></th>
+                            <th class="text-center"><b>DISHES</b></th>
+                            <th class="text-center"><b>SPECIAL REQUEST</b></th>
+                            <th class="text-center"><b>AMOUNT</b></th>
+                            <th class="text-center"><b>PRICE</b></th>
                             </tr>
                         </thead>
                        
@@ -144,35 +163,35 @@
 
                     //$Nama= $_SESSION["Nama"];
                     //$sql = "SELECT akun.id_pelanggan,akun.Nama,akun.No_hp, pesan.meja,pesan.date,pesan.time,pesan.people,pesan.clientrequest,menu.id_namamenu,menu.jumlah,menu.harga,nama_menu.Nama_Menu,nama_menu.Harga From akun join pesan on akun.id_pelanggan=pesan.id_pelanggan join menu on pesan.id_pesan=menu.id_pesan join nama_menu on menu.id_namamenu=nama_menu.id_namamenu where akun.Nama= '$Nama'";
-                    $sql = "SELECT menu.*, nama_menu.Nama_Menu, pesan.clientrequest, pesan.people FROM `menu` join nama_menu on nama_menu.id_namamenu = menu.id_namamenu join pesan on pesan.id_pesan = menu.id_pesan where menu.id_pesan=$id_pesanan";
+                    // $sql = "SELECT menu.*, nama_menu.Nama_Menu, pesan.clientrequest, pesan.people FROM `menu` join nama_menu on nama_menu.id_namamenu = menu.id_namamenu join pesan on pesan.id_pesan = menu.id_pesan where menu.id_pesan=$id_pesanan";
+                    $sql= "SELECT pesan.people, pesan.clientrequest, nama_menu.Nama_Menu, menu.harga, menu.jumlah FROM menu join nama_menu on nama_menu.id_namamenu = menu.id_namamenu join pesan on pesan.id_pesan=menu.id_pesan where menu.id_pesan='$id_pesanan'";
                     $data = mysqli_query($link, $sql);
-                    
 
+                    $Hasiltotal=0;
                     while($row = mysqli_fetch_array($data)){
                     error_reporting(0);
                     $total= $row['jumlah'] * $row['harga'];
                     $Hasiltotal = $Hasiltotal + $total;
-                             
-                               
+                              
                                 echo"<tr align='center'>
                                     <td>".$row['people']."</td>
                                     <td>".$row['Nama_Menu']."</td>
                                     <td>".$row['clientrequest']."</td>
-                                    <td>".$row['jumlah']."</td>   
+                                    <td>".$row['jumlah']."</td>
                                     <td>".str_replace(",", ".", number_format($total))."</td>
                                     </tr>";
-                     }     
+                            }     
                     ?>
 
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th class="text-right" colspan="4">Total</th>
-                                <th class="text-center"><?php echo str_replace(",", ".", number_format($Hasiltotal)) ?></th>
+                                <th class="text-center"><?php echo str_replace(",", ".", number_format($Hasiltotal))?></th>
                             </tr>
                         </tfoot>
                         </table>
-                         <td class="text-center"><a href=index.php#OrderHistory><b>Back</b></a></td>
+                         <button class="text-center"><a href=index.php#OrderHistory><b>Back</b></a></button>
                     </div>
                 </section>
             </div>
