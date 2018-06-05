@@ -21,7 +21,7 @@
 			$_SESSION ['Nama']= $Nama;
 			$_SESSION ['id_pelanggan']= $Id;
 			header("HTTP/1.1 302 Moved Temporarily");
-			header("location : SignIn.php");
+			header("location : login.php");
 			// header("location : index.php");
 			exit();
 
