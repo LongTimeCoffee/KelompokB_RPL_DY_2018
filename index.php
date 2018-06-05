@@ -702,7 +702,7 @@
 
 
             <!-- End Booking Section -->
-            <section id="contact" class="contact">
+            <!-- <section id="contact" class="contact">
                 <div id="map"></div>
                 <div class="container text-center">
                     <div class="form-holder">
@@ -729,7 +729,7 @@
                         </form>
                     </div>
                 </div>
-            </section>
+            </section> -->
             <!-- End Booking Section -->
 
             <!-- Footer -->
