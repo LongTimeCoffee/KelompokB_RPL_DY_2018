@@ -78,7 +78,7 @@
                 <nav class="navbar navbar-default navbar-fixed-top">
                     <div class="container">
                             <div class="navbar-buttons">
-                        <div class="navbar-header"><a href="index.html" class="navbar-brand"><alt="Italiano" width="100">LongTime
+                        <div class="navbar-header"><a href="index.php" class="navbar-brand"><alt="Italiano" width="100">LongTime
                             <div class="navbar-buttons">
                                 <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle navbar-btn">Menu<i class="fa fa-align-justify"></i></button>
                             </div>
@@ -94,7 +94,7 @@
                                     echo "<li><a href=\"#OrderHistory\">History Order</a></li>";
                                 }
                                 ?>
-                                 <li><a href="#contact">Contact</a></li>
+                                <!--  <li><a href="#contact">Contact</a></li> -->
                                  <?php
                                     if(isset($_SESSION['Nama'])){
                                         echo "<li><a href=\"index.php?logout='1'\">Logout</a></li> ";
